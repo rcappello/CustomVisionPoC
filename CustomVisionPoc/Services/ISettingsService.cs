@@ -2,12 +2,12 @@
 {
     public interface ISettingsService
     {
-        string Region { get; set; }
+        string PredictionServiceName { get; set; }
 
-        string ProjectName { get; set; }
+        string IterationName { get; set; }
 
         string PredictionKey { get; set; }
 
-        string IterationId { get; set; }
+        string ProjectId { get; set; }
     }
 }

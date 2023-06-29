@@ -6,16 +6,16 @@
         {
         }
 
-        public string Region
+        public string PredictionServiceName
         {
-            get => Preferences.Get(nameof(Region), null);
-            set => Preferences.Set(nameof(Region), value);
+            get => Preferences.Get(nameof(PredictionServiceName), null);
+            set => Preferences.Set(nameof(PredictionServiceName), value);
         }
 
-        public string ProjectName
+        public string IterationName
         {
-            get => Preferences.Get(nameof(ProjectName), null);
-            set => Preferences.Set(nameof(ProjectName), value);
+            get => Preferences.Get(nameof(IterationName), null);
+            set => Preferences.Set(nameof(IterationName), value);
         }
 
         public string PredictionKey
@@ -24,10 +24,10 @@
             set => Preferences.Set(nameof(PredictionKey), value);
         }
 
-        public string IterationId
+        public string ProjectId
         {
-            get => Preferences.Get(nameof(IterationId), Guid.Empty.ToString("D"));
-            set => Preferences.Set(nameof(IterationId), value);
+            get => Preferences.Get(nameof(ProjectId), Guid.Empty.ToString("D"));
+            set => Preferences.Set(nameof(ProjectId), value);
         }
     }
 }

@@ -4,18 +4,18 @@ using CustomVisionPoc.Services;
 
 namespace CustomVisionPoc.ViewModels
 {
-    public class SettingsViewModel : ViewModelBase
+    public partial class SettingsViewModel : ViewModelBase
     {
-        public string Region
+        public string PredictionServiceName
         {
-            get => SettingsService.Region;
-            set => SettingsService.Region = value;
+            get => SettingsService.PredictionServiceName;
+            set => SettingsService.PredictionServiceName = value;
         }
 
-        public string ProjectName
+        public string IterationName
         {
-            get => SettingsService.ProjectName;
-            set => SettingsService.ProjectName = value;
+            get => SettingsService.IterationName;
+            set => SettingsService.IterationName = value;
         }
 
         public string PredictionKey
@@ -24,23 +24,22 @@ namespace CustomVisionPoc.ViewModels
             set => SettingsService.PredictionKey = value;
         }
 
-        public string IterationId
+        public string ProjectId
         {
-            get => SettingsService.IterationId;
-            set => SettingsService.IterationId = value;
+            get => SettingsService.ProjectId;
+            set => SettingsService.ProjectId = value;
         }
-
-        public RelayCommand OpenCustomVisionWebSiteCommand { get; private set; }
 
         public SettingsViewModel(ISettingsService settingsService, INavigationService navigationService)
         : base(settingsService, navigationService)
         {
-            CreateCommands();
+
         }
 
-        private void CreateCommands()
+        [RelayCommand]
+        private async Task OpenCustomVisionWebSite()
         {
-            OpenCustomVisionWebSiteCommand = new RelayCommand(async () => await Browser.Default.OpenAsync(Constants.CustomVisionPortal, BrowserLaunchMode.SystemPreferred));
+            await Browser.Default.OpenAsync(Constants.CustomVisionPortal, BrowserLaunchMode.SystemPreferred);
         }
     }
 }

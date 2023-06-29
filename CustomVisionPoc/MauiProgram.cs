@@ -36,9 +36,11 @@ namespace CustomVisionPoc
 
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
+            mauiAppBuilder.Services.AddSingleton<IDialogService, DialogService>();
             mauiAppBuilder.Services.AddSingleton<IPermissionService, PermissionService>();
             mauiAppBuilder.Services.AddSingleton<INavigationService, NavigationService>();
             mauiAppBuilder.Services.AddSingleton<ISettingsService, SettingsService>();
+            mauiAppBuilder.Services.AddSingleton<IMediaService, MediaService>();
 
             return mauiAppBuilder;
         }

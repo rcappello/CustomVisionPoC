@@ -1,6 +1,4 @@
-﻿using static Microsoft.Maui.ApplicationModel.Permissions;
-
-namespace CustomVisionPoc.Services
+﻿namespace CustomVisionPoc.Services
 {
     public class PermissionService : IPermissionService
     {
@@ -11,59 +9,26 @@ namespace CustomVisionPoc.Services
             this.dialogService = dialogService;
         }
 
-        public async Task<PermissionStatus> CheckAsync(BasePermission permissionType, string permissionRequestRationaleMessage = null)
+        public async Task<PermissionStatus> CheckPermissions<TPermission>(string permissionRequestRationaleMessage = null) where TPermission : Permissions.BasePermission, new()
         {
-            var status = PermissionStatus.Denied;
-            var results = await CheckMultipleAsync(permissionRequestRationaleMessage, permissionType);
+            PermissionStatus status = await Permissions.CheckStatusAsync<TPermission>();
 
-            //Best practice to always check that the key exists
-            if (results.ContainsKey(permissionType))
+            if (status != PermissionStatus.Granted)
             {
-                status = results[permissionType];
+                status = await Permissions.RequestAsync<TPermission>();
+
+                if (Permissions.ShouldShowRationale<TPermission>())
+                {
+                    await dialogService.ShowAlertAsync(permissionRequestRationaleMessage ?? "Authorize app permission to continue.", "", "Ok");
+                }
             }
 
             return status;
         }
 
-        public Task<Dictionary<BasePermission, PermissionStatus>> CheckMultipleAsync(params BasePermission[] permissions)
-            => CheckMultipleAsync(null, permissions);
-
-        public async Task<Dictionary<BasePermission, PermissionStatus>> CheckMultipleAsync(string permissionRequestRationaleMessage, params BasePermission[] permissions)
+        public static bool IsGranted(PermissionStatus status)
         {
-            var requestPermissions = false;
-            var shouldShowRequestPermission = false;
-            var results = new Dictionary<BasePermission, PermissionStatus>();
-
-            // Checks the permission status for every permission.
-            for (var i = 0; i < permissions.Length; i++)
-            {
-                var permissionType = permissions[i];
-                var status = await permissionType.CheckStatusAsync();
-                results[permissionType] = status;
-
-                if (status != PermissionStatus.Granted)
-                {
-                    requestPermissions = true;
-                    shouldShowRequestPermission |= permissionType.ShouldShowRationale();
-                }
-            }
-
-            if (shouldShowRequestPermission)
-            {
-                await dialogService.ShowAlertAsync(permissionRequestRationaleMessage ?? "Authorize app permission to continue.", "", "Ok");
-            }
-
-            if (requestPermissions)
-            {
-                for (var i = 0; i < permissions.Length; i++)
-                {
-                    var permissionType = permissions[i];
-                    var result = await permissionType.RequestAsync();
-                    results.Add(permissionType, result);
-                }
-            }
-
-            return results;
+            return status == PermissionStatus.Granted || status == PermissionStatus.Limited;
         }
     }
 }

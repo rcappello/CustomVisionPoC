@@ -44,9 +44,6 @@
                 FontFamily="FontAwesome-Solid"
                 Glyph="{StaticResource CameraIcon}"
                 Color="{StaticResource White}" />
-
-            <!--  VIEWMODEL LOCATOR  -->
-            <vm:ViewModelLocator xmlns:vm="clr-namespace:CustomVisionPoc.ViewModels" x:Key="Locator" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

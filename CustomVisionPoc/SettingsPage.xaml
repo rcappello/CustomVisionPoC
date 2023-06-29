@@ -24,17 +24,17 @@
                 <Label
                     Margin="0,10,0,0"
                     Style="{StaticResource CaptionLabelStyle}"
-                    Text="Region" />
+                    Text="Prediction Service Name" />
                 <Entry
-                    Placeholder="westeurope, southcentralus, etc."
+                    Placeholder="the name of Azure Custom Vision Prediction service"
                     Style="{StaticResource SettingsEntryStyle}"
-                    Text="{Binding Region}" />
+                    Text="{Binding PredictionServiceName}" />
 
-                <Label Style="{StaticResource CaptionLabelStyle}" Text="Project Name" />
+                <Label Style="{StaticResource CaptionLabelStyle}" Text="Iteration Name" />
                 <Entry
-                    Placeholder="Insert the name"
+                    Placeholder="Insert the name of the published iteration"
                     Style="{StaticResource SettingsEntryStyle}"
-                    Text="{Binding ProjectName}" />
+                    Text="{Binding IterationName}" />
 
                 <Label Style="{StaticResource CaptionLabelStyle}" Text="Prediction Key" />
                 <Entry
@@ -42,11 +42,11 @@
                     Style="{StaticResource SettingsEntryStyle}"
                     Text="{Binding PredictionKey}" />
 
-                <Label Style="{StaticResource CaptionLabelStyle}" Text="Iteration Id" />
+                <Label Style="{StaticResource CaptionLabelStyle}" Text="Project Id" />
                 <Entry
-                    Placeholder="Insert the Iteration Id"
+                    Placeholder="Insert the Project Id"
                     Style="{StaticResource SettingsEntryStyle}"
-                    Text="{Binding IterationId}" />
+                    Text="{Binding ProjectId}" />
             </StackLayout>
         </ScrollView>
     </Grid>

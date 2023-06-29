@@ -5,8 +5,8 @@
              xmlns:viewmodels="clr-namespace:CustomVisionPoc.ViewModels"
              x:Class="CustomVisionPoc.MainPage" 
              Title="Custom Vision PoC"
-             x:DataType="viewmodels:MainViewModel"
-             BindingContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}">
+             x:DataType="viewmodels:MainViewModel">
+    <!--BindingContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}">-->
     
     <ContentPage.ToolbarItems>
         <ToolbarItem 
