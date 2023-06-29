@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<common:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:common="clr-namespace:CustomVisionPoc.Common"
+             xmlns:viewmodels="clr-namespace:CustomVisionPoc.ViewModels"
+             x:Class="CustomVisionPoc.MainPage" 
+             Title="Custom Vision PoC"
+             x:DataType="viewmodels:MainViewModel"
+             BindingContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Command="{Binding TakePhotoCommand}"
+            IconImageSource="{StaticResource CameraIconImageSource}"
+            Text="Take a photo"
+            Priority="0"
+            Order="Primary"/>
+
+        <ToolbarItem 
+            Command="{Binding PickPhotoCommand}"
+            IconImageSource="{StaticResource ImageGalleryIconImageSource}"
+            Text="Pick photo"
+            Priority="1"
+            Order="Primary"/>
+
+        <ToolbarItem 
+            Command="{Binding SettingsCommand}"
+            IconImageSource="{StaticResource SettingsIconImageSource}"
+            Text="Settings"
+            Priority="0"
+            Order="Secondary"/>
+
+    </ContentPage.ToolbarItems>
+
+    <Grid Style="{StaticResource MasterGridStyle}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Column="0" Margin="5,10,5,5">
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Label Style="{StaticResource SwitchLabelStyle}"
+                    Text="Online"
+                    VerticalOptions="Center" />
+                <Switch IsEnabled="false"
+                        IsToggled="{Binding IsOffline, Mode=TwoWay}" />
+                <Label Style="{StaticResource SwitchLabelStyle}"
+                       Text="Offline"
+                       VerticalOptions="Center" />
+            </StackLayout>
+            <Image
+                Margin="12"
+                Aspect="AspectFit"
+                Source="{Binding ImagePath}"
+                VerticalOptions="Start" />
+        </StackLayout>
+
+        <ListView
+            Grid.Column="1"
+            CachingStrategy="RecycleElementAndDataTemplate"
+            ItemsSource="{Binding Predictions}"
+            SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label
+                            FontSize="Medium"
+                            Text="{Binding .}"
+                            VerticalOptions="Center" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="UWP">12,12,12,12</On>
+                    <On Platform="Android, iOS">0,1,12,12</On>
+                </OnPlatform>
+            </ListView.Margin>
+        </ListView>
+
+        <ActivityIndicator
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}" />
+    </Grid>
+
+</common:ContentPageBase>

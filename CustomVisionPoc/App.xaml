@@ -1,0 +1,52 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CustomVisionPoc"
+             x:Class="CustomVisionPoc.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--  FONTS  -->
+            <x:String x:Key="SettingsIcon">&#xf013;</x:String>
+            <x:String x:Key="ImageGalleryIcon">&#xf302;</x:String>
+            <x:String x:Key="CameraIcon">&#xf030;</x:String>
+            
+            <FontImageSource
+                x:Key="SettingsIconImageSource"
+                FontFamily="FontAwesome-Solid"
+                Glyph="{StaticResource SettingsIcon}" />
+            <FontImageSource
+                x:Key="SettingsIconLightImageSource"
+                FontFamily="FontAwesome-Solid"
+                Glyph="{StaticResource SettingsIcon}"
+                Color="{StaticResource White}" />
+
+            <FontImageSource
+                x:Key="ImageGalleryIconImageSource"
+                FontFamily="FontAwesome-Solid"
+                Glyph="{StaticResource ImageGalleryIcon}" />
+            <FontImageSource
+                x:Key="ImageGalleryIconLightImageSource"
+                FontFamily="FontAwesome-Solid"
+                Glyph="{StaticResource ImageGalleryIcon}"
+                Color="{StaticResource White}" />
+
+            <FontImageSource
+                x:Key="CameraIconImageSource"
+                FontFamily="FontAwesome-Solid"
+                Glyph="{StaticResource CameraIcon}" />
+            <FontImageSource
+                x:Key="CameraIconLightImageSource"
+                FontFamily="FontAwesome-Solid"
+                Glyph="{StaticResource CameraIcon}"
+                Color="{StaticResource White}" />
+
+            <!--  VIEWMODEL LOCATOR  -->
+            <vm:ViewModelLocator xmlns:vm="clr-namespace:CustomVisionPoc.ViewModels" x:Key="Locator" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
