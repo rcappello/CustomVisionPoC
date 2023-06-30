@@ -60,13 +60,5 @@ namespace CustomVisionPoc.ViewModels
         public virtual void Deactivate()
         {
         }
-
-        protected async Task ShowErrorAsync(string message, Exception ex = null)
-        {
-            //DialogService.HideLoading();
-            //await DialogService.AlertAsync(message);
-        }
     }
-
-
 }

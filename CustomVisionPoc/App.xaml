@@ -14,6 +14,7 @@
             <x:String x:Key="SettingsIcon">&#xf013;</x:String>
             <x:String x:Key="ImageGalleryIcon">&#xf302;</x:String>
             <x:String x:Key="CameraIcon">&#xf030;</x:String>
+            <x:String x:Key="GlobeIcon">&#xf0ac;</x:String>
             
             <FontImageSource
                 x:Key="SettingsIconImageSource"
@@ -43,6 +44,16 @@
                 x:Key="CameraIconLightImageSource"
                 FontFamily="FontAwesome-Solid"
                 Glyph="{StaticResource CameraIcon}"
+                Color="{StaticResource White}" />
+
+            <FontImageSource
+                x:Key="GlobeIconImageSource"
+                FontFamily="FontAwesome-Solid"
+                Glyph="{StaticResource GlobeIcon}" />
+            <FontImageSource
+                x:Key="GlobeIconLightImageSource"
+                FontFamily="FontAwesome-Solid"
+                Glyph="{StaticResource GlobeIcon}"
                 Color="{StaticResource White}" />
         </ResourceDictionary>
     </Application.Resources>

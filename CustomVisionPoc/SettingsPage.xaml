@@ -11,7 +11,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Command="{Binding OpenCustomVisionWebSiteCommand}"
-            IconImageSource="OpenBrowser.png"
+            IconImageSource="{StaticResource GlobeIconImageSource}"
             Order="Primary"
             Priority="0"
             Text="Go to Custom Vision portal">

@@ -35,7 +35,9 @@ namespace CustomVisionEngine.Shared
             {
                 Tag = p.Tag,
                 Probability = p.Probability
-            }).ToList();
+            }).OrderByDescending(o => o.Probability)
+                .ThenBy(o => o.Tag)
+                .ToList();
 
             return results;
         }
