@@ -1,6 +1,6 @@
 # Custom Vision PoC
 
-Custom Vision PoC is a simple project to demonstrate how to use Microsoft [Custom Vision](https://www.customvision.ai) API to train a model and use it to predict images.
+Custom Vision PoC is a simple project to demonstrate how to use Microsoft [Custom Vision](https://www.customvision.ai) API to train a model and use it to test the trained model.
 
 
 
