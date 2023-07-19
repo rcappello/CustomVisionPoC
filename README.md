@@ -13,3 +13,10 @@ PoC built with .NET Multi-platform App UI (.NET MAUI).
 ## .NET MAUI Official Samples
 
 Official samples can be accessed via the [Samples browser](https://docs.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-maui).
+
+
+
+---
+Getting started
+
+To use an online model (the offline model will be available in the future), launch the app, go to the Settings page and then set Service Name, Iteration Name, Prediction Key and Project Id using the values you can grab from Custom Vision Service Portal.
