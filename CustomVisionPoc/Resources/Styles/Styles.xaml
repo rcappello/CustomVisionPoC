@@ -413,11 +413,15 @@
     </Style>
 
     <Style x:Key="SwitchLabelStyle" TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource TextColorWithLightBackground}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" />
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
 
     <Style x:Key="SettingsEntryStyle" TargetType="Entry">
         <Setter Property="Margin" Value="{OnPlatform WinUI='0,0,0,0', Android='0,-10,0,0', iOS='0,-10,0,0'}" />
+    </Style>
+
+    <Style x:Key="CaptionLabelStyle" TargetType="Entry">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource White}}" />
     </Style>
 </ResourceDictionary>
