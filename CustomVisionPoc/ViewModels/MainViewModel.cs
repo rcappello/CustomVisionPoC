@@ -13,7 +13,7 @@ namespace CustomVisionPoc.ViewModels
         private readonly IDialogService dialogService;
 
         [ObservableProperty]
-        private IEnumerable<string> predictions;
+        private IEnumerable<Recognition> predictions;
 
         [ObservableProperty]
         private bool isOffline;
@@ -63,6 +63,7 @@ namespace CustomVisionPoc.ViewModels
                     IEnumerable<Recognition> predictionsRecognized = null;
                     if (isOffline)
                     {
+                        //TODO: Not yet implemented
                         //    var classifier = CrossOfflineClassifier.Current;
                         //    predictionsRecognized = await classifier.RecognizeAsync(file.GetStream(), file.Path);
                     }
@@ -72,7 +73,7 @@ namespace CustomVisionPoc.ViewModels
                         predictionsRecognized = await classifier.RecognizeAsync(SettingsService.PredictionServiceName, SettingsService.PredictionKey, SettingsService.IterationName, Guid.Parse(SettingsService.ProjectId), await file.OpenReadAsync());
                     }
 
-                    Predictions = predictionsRecognized.Select(p => $"{p.Tag}: {p.Probability:P1}");
+                    Predictions = predictionsRecognized ?? new List<Recognition>();
                 }
                 else
                 {

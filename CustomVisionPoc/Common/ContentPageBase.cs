@@ -5,6 +5,7 @@ using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
 namespace CustomVisionPoc.Common
 {
+    [XamlCompilation(XamlCompilationOptions.Skip)]
     public abstract class ContentPageBase : ContentPage
     {
         public ContentPageBase()

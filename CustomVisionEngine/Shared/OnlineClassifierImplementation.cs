@@ -34,7 +34,8 @@ namespace CustomVisionEngine.Shared
             var results = predictions.Predictions.Select(p => new Recognition
             {
                 Tag = p.Tag,
-                Probability = p.Probability
+                Probability = p.Probability,
+                Description = $"{p.Tag}: {p.Probability:P1}"
             }).OrderByDescending(o => o.Probability)
                 .ThenBy(o => o.Tag)
                 .ToList();

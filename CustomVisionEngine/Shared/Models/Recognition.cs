@@ -6,9 +6,6 @@
 
         public double Probability { get; set; }
 
-        public override string ToString()
-        {
-            return string.Format($"[Tag: {Tag}, Probability: {Probability}]");
-        }
+        public string Description { get; set; }
     }
 }
