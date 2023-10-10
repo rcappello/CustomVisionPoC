@@ -3,7 +3,7 @@ using CustomVisionPoc.Services;
 
 namespace CustomVisionPoc.ViewModels
 {
-    public abstract class ViewModelBase : ObservableObject
+    public abstract partial class ViewModelBase : ObservableObject
     {
         protected ISettingsService SettingsService { get; }
         protected INavigationService NavigationService { get; }
@@ -16,42 +16,8 @@ namespace CustomVisionPoc.ViewModels
 
         public bool IsActive { get; set; }
 
+        [ObservableProperty]
         private bool isBusy;
-        public bool IsBusy
-        {
-            get => isBusy;
-            set
-            {
-                if (SetBusy(value) && !isBusy)
-                {
-                    BusyMessage = null;
-                }
-            }
-        }
-
-        private string busyMessage;
-        public string BusyMessage
-        {
-            get => busyMessage;
-            set => SetProperty(ref busyMessage, value);
-        }
-
-        public bool SetBusy(bool value, string message = null)
-        {
-            BusyMessage = message;
-
-            var isSet = SetProperty(ref isBusy, value);
-            if (isSet)
-            {
-                OnIsBusyChanged();
-            }
-
-            return isSet;
-        }
-
-        protected virtual void OnIsBusyChanged()
-        {
-        }
 
         public virtual void Activate(object parameter)
         {
