@@ -65,7 +65,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <Label
-                            FontSize="Medium"
+                            Style="{StaticResource ListLabelStyle}"
                             Text="{Binding .}"
                             VerticalOptions="Center" />
                     </ViewCell>

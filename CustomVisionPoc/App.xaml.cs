@@ -4,13 +4,13 @@ namespace CustomVisionPoc
 {
     public partial class App : Application
     {
-        private readonly INavigationService _navigationService;
+        private readonly INavigationService navigationService;
 
         public static bool IsPausing { get; set; }
 
         public App(INavigationService navigationService)
         {
-            _navigationService = navigationService;
+            this.navigationService = navigationService;
 
             InitializeComponent();
 

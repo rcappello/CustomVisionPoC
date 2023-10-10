@@ -4,11 +4,11 @@ namespace CustomVisionPoc
 {
     public partial class AppShell : Shell
     {
-        private readonly INavigationService _navigationService;
+        private readonly INavigationService navigationService;
 
         public AppShell(INavigationService navigationService)
         {
-            _navigationService = navigationService;
+            this.navigationService = navigationService;
 
             AppShell.InitializeRouting();
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace CustomVisionPoc
 
             if (Handler is not null)
             {
-                await _navigationService.InitializeAsync();
+                await navigationService.InitializeAsync();
             }
         }
 

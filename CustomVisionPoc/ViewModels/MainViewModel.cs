@@ -74,6 +74,10 @@ namespace CustomVisionPoc.ViewModels
 
                     Predictions = predictionsRecognized.Select(p => $"{p.Tag}: {p.Probability:P1}");
                 }
+                else
+                {
+                    await dialogService.ShowAlertAsync("Unable to get a photo. Please check app permissions", "Error", "Ok");
+                }
             }
             catch (Exception ex)
             {
